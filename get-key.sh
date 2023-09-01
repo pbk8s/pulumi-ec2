@@ -18,4 +18,4 @@ fi
 pulumi stack output private_key_pem --show-secrets > p1-key.pem
 chmod 400 p1-key.pem
 
-echo "You can SSH now: ssh -i p1-key-pem ubuntu@"
+echo "You can SSH now: ssh -i p1-key.pem ubuntu@"

@@ -4,7 +4,7 @@ import pulumi_command as command
 import pulumi_aws as aws
 
 # EC2 instance
-size = 't4g.small'
+size = 'm6g.2xlarge'
 
 ssh_key = tls.PrivateKey(
     "p1-key",
@@ -128,6 +128,14 @@ copy_script = command.remote.CopyFile('p1-copy-script',
     connection=connection,
     local_path='install-mongodb.sh',
     remote_path='install-mongodb.sh',
+    opts=pulumi.ResourceOptions(depends_on=[server]),
+)
+
+# Copy gatord binary
+copy_script = command.remote.CopyFile('gatord-copy',
+    connection=connection,
+    local_path='gatord',
+    remote_path='gatord',
     opts=pulumi.ResourceOptions(depends_on=[server]),
 )
 
