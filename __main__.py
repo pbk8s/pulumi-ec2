@@ -41,7 +41,7 @@ vpc = aws.ec2.Vpc("p1-vpc",
 subnet = aws.ec2.Subnet("p1-subnet",
     vpc_id=vpc.id,
     cidr_block="172.16.0.0/24",
-    availability_zone="us-east-1a",
+    availability_zone="eu-west-1a",
     map_public_ip_on_launch=True,
     tags={
         "Name": "p1-subnet",
@@ -132,12 +132,12 @@ copy_script = command.remote.CopyFile('p1-copy-script',
 )
 
 # Copy gatord binary
-copy_script = command.remote.CopyFile('gatord-copy',
-    connection=connection,
-    local_path='gatord',
-    remote_path='gatord',
-    opts=pulumi.ResourceOptions(depends_on=[server]),
-)
+#copy_script = command.remote.CopyFile('gatord-copy',
+#    connection=connection,
+#    local_path='gatord',
+#    remote_path='gatord',
+#    opts=pulumi.ResourceOptions(depends_on=[server]),
+#)
 
 # Execute a basic command on our server.
 run_script = command.remote.Command('p1-run-script',
