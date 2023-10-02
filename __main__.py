@@ -41,7 +41,7 @@ vpc = aws.ec2.Vpc("p1-vpc",
 subnet = aws.ec2.Subnet("p1-subnet",
     vpc_id=vpc.id,
     cidr_block="172.16.0.0/24",
-    availability_zone="eu-west-1a",
+    availability_zone="us-east-1a",
     map_public_ip_on_launch=True,
     tags={
         "Name": "p1-subnet",
