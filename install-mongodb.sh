@@ -51,10 +51,10 @@ sudo pip3 install .
 popd
 
 # Streamline gatord (source build)
-git clone https://github.com/ARM-software/gator.git
-pushd gator
-./build-linux.sh
-popd
+#git clone https://github.com/ARM-software/gator.git
+#pushd gator
+#./build-linux.sh
+#popd
 # Install binary 
 [ -f gatord ] && echo "gatord is present" ; chmod +x gatord; sudo cp gatord /usr/local/bin
 
