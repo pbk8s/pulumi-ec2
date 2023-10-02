@@ -15,8 +15,9 @@ sudo apt-get install linux-tools-generic linux-tools-$(uname -r) -y
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
 
 # Install Java
-wget https://corretto.aws/downloads/latest/amazon-corretto-17-aarch64-linux-jdk.deb
-sudo apt install -y ./amazon-corretto-17-aarch64-linux-jdk.deb
+wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add - 
+sudo add-apt-repository 'deb https://apt.corretto.aws stable main'
+sudo apt-get update; sudo apt-get install -y java-17-amazon-corretto-jdk
 
 # Instal MongoDB
 curl -fsSL https://pgp.mongodb.com/server-6.0.asc |    sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg    --dearmor
@@ -50,10 +51,10 @@ sudo pip3 install .
 popd
 
 # Streamline gatord (source build)
-#git clone https://github.com/ARM-software/gator.git
-#pushd gator
-#./build-linux.sh
-#popd
+git clone https://github.com/ARM-software/gator.git
+pushd gator
+./build-linux.sh
+popd
 # Install binary 
 [ -f gatord ] && echo "gatord is present" ; chmod +x gatord; sudo cp gatord /usr/local/bin
 
