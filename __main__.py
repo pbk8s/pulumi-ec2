@@ -132,12 +132,12 @@ copy_script = command.remote.CopyFile('p1-copy-script',
 )
 
 # Copy gatord binary
-#copy_script = command.remote.CopyFile('gatord-copy',
-#    connection=connection,
-#    local_path='gatord',
-#    remote_path='gatord',
-#    opts=pulumi.ResourceOptions(depends_on=[server]),
-#)
+copy_script = command.remote.CopyFile('gatord-copy',
+    connection=connection,
+    local_path='gatord',
+    remote_path='gatord',
+    opts=pulumi.ResourceOptions(depends_on=[server]),
+)
 
 # Execute a basic command on our server.
 run_script = command.remote.Command('p1-run-script',
