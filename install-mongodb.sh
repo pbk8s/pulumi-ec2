@@ -3,7 +3,7 @@
 # Install MongoDB and perf analysis tools
 
 sudo apt update
-sudo apt upgrade -y
+#sudo apt upgrade -y
 
 # Common software
 sudo apt-get install gnupg curl java-common python2 python3-pip ninja-build cmake gcc g++ zip unzip pkg-config -y
